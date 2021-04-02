@@ -1,6 +1,10 @@
 # Semi-supervised Semantic Segmentation with Directional Context-aware Consistency (CAC)
 *Lai Xin<sup>\*</sup>, Zhuotao Tian<sup>\*</sup>, Li Jiang, Shu Liu, Hengshuang Zhao, Liwei Wang, Jiaya Jia*
 
+<div align="center">
+  <img src="figures/fig.png"/>
+</div>
+
 This is the official PyTorch implementation of our paper [**Semi-supervised Semantic Segmentation with Directional Context-aware Consistency**](https://jiaya.me/papers/semiseg_cvpr21.pdf) that has been accepted to 2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2021).
 
 # Highlight 
@@ -33,10 +37,11 @@ pip install -r requirements.txt
 
 ## Training
 
-Firsly, you should download the PyTorch ResNet101 or ResNet50 ImageNet-pretrained weight into the 'pretrained/' directory using the following commands
+Firsly, you should download the PyTorch ResNet101 or ResNet50 ImageNet-pretrained weight, and put it into the 'pretrained/' directory using the following commands.
 
 ```
 cd Context-Aware-Consistency
+mkdir pretrained
 cd pretrained
 wget https://download.pytorch.org/models/resnet50-19c8e357.pth # ResNet50
 wget https://download.pytorch.org/models/resnet101-5d3b4d8f.pth # ResNet101
@@ -63,9 +68,15 @@ python3 train.py --config [CONFIG_PATH] --resume [CHECKPOINT_PATH] --test True
 
 # Related Repositories
 
-This repository highly depends on the **CCT** repository at https://github.com/yassouali/CCT. We thank the authors of CCT for their great work and clean codes.
+This repository highly depends on the **CCT** repository at https://github.com/yassouali/CCT. We thank the authors of CCT for their great work and clean code.
 
-Besides, we also borrow some codes from **Semseg** at https://github.com/hszhao/semseg, and also **MoCo** at https://github.com/facebookresearch/moco. Thanks a lot for their great work.
+Besides, we also borrow some codes from the following repositories.
+
+- **MoCo** at https://github.com/facebookresearch/moco. 
+- **Deeplabv3+** at https://github.com/jfzhang95/pytorch-deeplab-xception.
+- **Semseg** at https://github.com/hszhao/semseg
+
+Thanks a lot for their great work.
 
 # Citation
 If you find this project useful, please consider citing:

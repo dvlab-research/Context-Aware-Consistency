@@ -15,7 +15,7 @@ slurm_logs/
 experiments/
 experiments_da/
 config[0-9]*
-*.png
+# *.png
 *.pth
 
 # Distribution / packaging
