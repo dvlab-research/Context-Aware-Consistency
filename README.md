@@ -1,5 +1,5 @@
 # Semi-supervised Semantic Segmentation with Directional Context-aware Consistency (CAC)
-*Lai Xin<sup>\*</sup>, Zhuotao Tian<sup>\*</sup>, Li Jiang, Shu Liu, Hengshuang Zhao, Liwei Wang, Jiaya Jia*
+*Xin Lai<sup>\*</sup>, Zhuotao Tian<sup>\*</sup>, Li Jiang, Shu Liu, Hengshuang Zhao, Liwei Wang, Jiaya Jia*
 
 This is the official PyTorch implementation of our paper [**Semi-supervised Semantic Segmentation with Directional Context-aware Consistency**](https://jiaya.me/papers/semiseg_cvpr21.pdf) that has been accepted to 2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2021).
 
@@ -84,7 +84,7 @@ If you find this project useful, please consider citing:
 ```
 @inproceedings{lai2021cac,
   title     = {Semi-supervised Semantic Segmentation with Directional Context-aware Consistency},
-  author    = {Lai Xin, Zhuotao Tian, Li Jiang, Shu Liu, Hengshuang Zhao, Liwei Wang and Jiaya Jia},
+  author    = {Xin Lai, Zhuotao Tian, Li Jiang, Shu Liu, Hengshuang Zhao, Liwei Wang and Jiaya Jia},
   booktitle = {CVPR},
   year      = {2021}
 }
