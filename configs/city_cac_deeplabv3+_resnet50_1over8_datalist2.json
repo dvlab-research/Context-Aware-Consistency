@@ -1,0 +1,104 @@
+{
+    "name": "CAC",
+    "experim_name": "city_cac_deeplabv3+_resnet50_1over8_datalist2",
+    "dataset": "cityscapes",
+    "data_dir": "/home/xinlai/dataset/cityscapes",
+    "datalist": 2,
+    "n_gpu": 4,
+    "n_labeled_examples": 372,
+    "diff_lrs": true,
+    "ramp_up": 0.1,
+    "unsupervised_w": 30,
+    "ignore_index": 255,
+    "lr_scheduler": "Poly",
+    "use_weak_lables":false,
+    "weakly_loss_w": 0.4,
+    "pretrained": true,
+    "random_seed": 42,
+
+    "model":{
+        "supervised": false,
+        "semi": true,
+        "supervised_w": 1,
+
+        "sup_loss": "CE",
+
+        "layers": 50,
+        "downsample": true,
+        "proj_final_dim": 128,
+        "out_dim": 256,
+        "backbone": "deeplab_v3+",
+        "pos_thresh_value": 0.75,
+        "weight_unsup": 0.1,
+        "epoch_start_unsup": 5,
+        "selected_num": 16200,
+        "temp": 0.1,
+        "step_save": 0,
+        "stride": 8
+    },
+
+
+    "optimizer": {
+        "type": "SGD",
+        "args":{
+            "lr": 0.1,
+            "weight_decay": 1e-4,
+            "momentum": 0.9
+        }
+    },
+
+    "train_supervised": {
+        "batch_size": 8,
+        "crop_size": 720,
+        "shuffle": true,
+        "base_size": 2048,
+        "scale": true,
+        "augment": true,
+        "flip": true,
+        "rotate": false,
+        "blur": false,
+        "split": "train_supervised",
+        "num_workers": 8,
+        "jitter": true
+    },
+
+    "train_unsupervised": {
+        "batch_size": 8,
+        "crop_size": 720,
+        "shuffle": true,
+        "base_size": 2048,
+        "scale": true,
+        "augment": true,
+        "flip": true,
+        "rotate": false,
+        "blur": false,
+        "split": "train_unsupervised",
+        "num_workers": 8,
+        "iou_bound": [0.1, 1.0],
+        "stride": 8
+    },
+
+    "val_loader": {
+        "batch_size": 4,
+        "val": true,
+        "split": "val",
+        "shuffle": false,
+        "num_workers": 4
+    },
+
+    "trainer": {
+        "epochs": 80,
+        "save_dir": "saved/",
+        "save_period": 1,
+  
+        "monitor": "max Mean_IoU",
+        "early_stop": 100,
+        
+        "tensorboardX": true,
+        "log_dir": "saved/",
+        "log_per_iter": 20,
+
+        "val": true,
+        "val_per_epochs": 1
+    }
+}

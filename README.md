@@ -1,14 +1,15 @@
 # Semi-supervised Semantic Segmentation with Directional Context-aware Consistency (CAC)
 *Xin Lai<sup>\*</sup>, Zhuotao Tian<sup>\*</sup>, Li Jiang, Shu Liu, Hengshuang Zhao, Liwei Wang, Jiaya Jia*
 
-This is the official PyTorch implementation of our paper [**Semi-supervised Semantic Segmentation with Directional Context-aware Consistency**](https://jiaya.me/papers/semiseg_cvpr21.pdf) that has been accepted to 2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2021).
+This is the official PyTorch implementation of our paper [**Semi-supervised Semantic Segmentation with Directional Context-aware Consistency**](https://jiaya.me/papers/semiseg_cvpr21.pdf) that has been accepted to 2021 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR 2021). [[Paper]](https://jiaya.me/papers/semiseg_cvpr21.pdf)
 
 <div align="center">
   <img src="figures/fig.png"/>
 </div>
 
 # Highlight 
-Our method achives the state-of-the-art performance on semi-supervised semantic segmentation. Based on [**CCT**](https://github.com/yassouali/CCT), this Repository also supports efficient distributed training with multiple GPUs.
+1. Our method achives the state-of-the-art performance on semi-supervised semantic segmentation. 
+2. Based on [**CCT**](https://github.com/yassouali/CCT), this Repository also supports efficient distributed training with multiple GPUs.
 
 # Get Started
 ## Environment
@@ -65,6 +66,10 @@ For testing, run the following command.
 ```
 python3 train.py --config [CONFIG_PATH] --resume [CHECKPOINT_PATH] --test True
 ```
+
+## Pre-trained Models
+
+For your convenience, you can download some of the pre-trained models from [Here](https://mycuhk-my.sharepoint.com/:f:/g/personal/1155154502_link_cuhk_edu_hk/EpHdT2JFT11FpsUc4jHE3CoB2wUZ5tQo_W0QzzqHdNtF-A?e=yx2Xha).
 
 # Related Repositories
 
