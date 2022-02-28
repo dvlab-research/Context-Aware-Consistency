@@ -1,9 +1,7 @@
 import torch
 import torch.nn.functional as F
 import torch.nn as nn
-import math
 from models.modeling.sync_batchnorm.batchnorm import SynchronizedBatchNorm2d
-import torch.utils.model_zoo as model_zoo
 
 def conv_bn(inp, oup, stride, BatchNorm):
     return nn.Sequential(
@@ -121,7 +119,7 @@ class MobileNetV2(nn.Module):
         return x, low_level_feat
 
     def _load_pretrained_model(self):
-        pretrain_dict = model_zoo.load_url('http://jeff95.me/models/mobilenet_v2-6a65762b.pth')
+        pretrain_dict = torch.hub.load_state_dict_from_url('http://jeff95.me/models/mobilenet_v2-6a65762b.pth')
         model_dict = {}
         state_dict = self.state_dict()
         for k, v in pretrain_dict.items():

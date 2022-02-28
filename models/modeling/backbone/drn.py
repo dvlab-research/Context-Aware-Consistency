@@ -1,6 +1,6 @@
+import torch
 import torch.nn as nn
 import math
-import torch.utils.model_zoo as model_zoo
 from models.modeling.sync_batchnorm.batchnorm import SynchronizedBatchNorm2d
 
 webroot = 'http://dl.yf.io/drn/'
@@ -303,14 +303,14 @@ class DRN_A(nn.Module):
 def drn_a_50(BatchNorm, pretrained=True):
     model = DRN_A(Bottleneck, [3, 4, 6, 3], BatchNorm=BatchNorm)
     if pretrained:
-        model.load_state_dict(model_zoo.load_url(model_urls['resnet50']))
+        model.load_state_dict(torch.hub.load_state_dict_from_url(model_urls['resnet50']))
     return model
 
 
 def drn_c_26(BatchNorm, pretrained=True):
     model = DRN(BasicBlock, [1, 1, 2, 2, 2, 2, 1, 1], arch='C', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-c-26'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-c-26'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
@@ -320,7 +320,7 @@ def drn_c_26(BatchNorm, pretrained=True):
 def drn_c_42(BatchNorm, pretrained=True):
     model = DRN(BasicBlock, [1, 1, 3, 4, 6, 3, 1, 1], arch='C', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-c-42'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-c-42'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
@@ -330,7 +330,7 @@ def drn_c_42(BatchNorm, pretrained=True):
 def drn_c_58(BatchNorm, pretrained=True):
     model = DRN(Bottleneck, [1, 1, 3, 4, 6, 3, 1, 1], arch='C', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-c-58'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-c-58'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
@@ -340,7 +340,7 @@ def drn_c_58(BatchNorm, pretrained=True):
 def drn_d_22(BatchNorm, pretrained=True):
     model = DRN(BasicBlock, [1, 1, 2, 2, 2, 2, 1, 1], arch='D', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-d-22'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-d-22'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
@@ -350,7 +350,7 @@ def drn_d_22(BatchNorm, pretrained=True):
 def drn_d_24(BatchNorm, pretrained=True):
     model = DRN(BasicBlock, [1, 1, 2, 2, 2, 2, 2, 2], arch='D', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-d-24'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-d-24'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
@@ -360,7 +360,7 @@ def drn_d_24(BatchNorm, pretrained=True):
 def drn_d_38(BatchNorm, pretrained=True):
     model = DRN(BasicBlock, [1, 1, 3, 4, 6, 3, 1, 1], arch='D', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-d-38'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-d-38'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
@@ -370,7 +370,7 @@ def drn_d_38(BatchNorm, pretrained=True):
 def drn_d_40(BatchNorm, pretrained=True):
     model = DRN(BasicBlock, [1, 1, 3, 4, 6, 3, 2, 2], arch='D', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-d-40'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-d-40'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
@@ -380,7 +380,7 @@ def drn_d_40(BatchNorm, pretrained=True):
 def drn_d_54(BatchNorm, pretrained=True):
     model = DRN(Bottleneck, [1, 1, 3, 4, 6, 3, 1, 1], arch='D', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-d-54'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-d-54'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
@@ -390,7 +390,7 @@ def drn_d_54(BatchNorm, pretrained=True):
 def drn_d_105(BatchNorm, pretrained=True):
     model = DRN(Bottleneck, [1, 1, 3, 4, 23, 3, 1, 1], arch='D', BatchNorm=BatchNorm)
     if pretrained:
-        pretrained = model_zoo.load_url(model_urls['drn-d-105'])
+        pretrained = torch.hub.load_state_dict_from_url(model_urls['drn-d-105'])
         del pretrained['fc.weight']
         del pretrained['fc.bias']
         model.load_state_dict(pretrained)
