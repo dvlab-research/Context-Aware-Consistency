@@ -146,7 +146,7 @@ class ResNet(nn.Module):
         from torchvision import models
         url = getattr(models, 'ResNet50_Weights').IMAGENET1K_V2.url
 
-        print(f"Load pretrained paremeters: {url}")
+        print(f"Load pretrained parameters: {url}")
         pretrain_dict = torch.hub.load_state_dict_from_url(url)
 
         state_dict = self.state_dict()
