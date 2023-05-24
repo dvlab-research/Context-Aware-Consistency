@@ -143,8 +143,9 @@ class ResNet(nn.Module):
                 m.bias.data.zero_()
 
     def _load_pretrained_model(self):
-        from torchvision.models.resnet import model_urls
-        url = model_urls[f"resnet{self.resnet_layers}"]
+        from torchivision import models
+        url = getattr(models, 'ResNet50_Weights').IMAGENET1K_V2.url
+
         print(f"Load pretrained paremeters: {url}")
         pretrain_dict = torch.hub.load_state_dict_from_url(url)
 
