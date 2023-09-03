@@ -1,7 +1,7 @@
 import math
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.utils.model_zoo as model_zoo
+import torch.hub
 import torch
 from models.modeling.sync_batchnorm.batchnorm import SynchronizedBatchNorm2d
 import os
@@ -143,27 +143,14 @@ class ResNet(nn.Module):
                 m.bias.data.zero_()
 
     def _load_pretrained_model(self):
-        # pretrain_dict = model_zoo.load_url('https://download.pytorch.org/models/resnet101-5d3b4d8f.pth')
-        if self.resnet_layers == 101:
-            path = 'pretrained/resnet101-5d3b4d8f.pth'
-        elif self.resnet_layers == 50:
-            path = 'pretrained/resnet50-19c8e357.pth'
-        else:
-            raise ValueError("{} layers not supported".format(self.resnet_layers))
+        from torchvision import models
+        url = getattr(models, 'ResNet50_Weights').IMAGENET1K_V2.url
 
-        if os.path.exists(path):
-            pretrain_dict = path
-        else:
-            raise ValueError("The path {} not exists".format(path))
+        print(f"Load pretrained parameters: {url}")
+        pretrain_dict = torch.hub.load_state_dict_from_url(url)
 
-        print("load pretrained weight from {}".format(pretrain_dict))
-        pretrain_dict = torch.load(pretrain_dict)
-        model_dict = {}
         state_dict = self.state_dict()
-        for k, v in pretrain_dict.items():
-            if k in state_dict:
-                model_dict[k] = v
-        state_dict.update(model_dict)
+        state_dict.update({k: v for k, v in pretrain_dict.items() if k in state_dict})
         self.load_state_dict(state_dict)
 
 def ResNet101(output_stride, BatchNorm, pretrained=True):

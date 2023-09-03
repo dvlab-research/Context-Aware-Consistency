@@ -2,7 +2,6 @@ import math
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.utils.model_zoo as model_zoo
 from models.modeling.sync_batchnorm.batchnorm import SynchronizedBatchNorm2d
 
 def fixed_padding(inputs, kernel_size, dilation):
@@ -248,7 +247,7 @@ class AlignedXception(nn.Module):
 
 
     def _load_pretrained_model(self):
-        pretrain_dict = model_zoo.load_url('http://data.lip6.fr/cadene/pretrainedmodels/xception-b5690688.pth')
+        pretrain_dict = torch.hub.load_state_dict_from_url('http://data.lip6.fr/cadene/pretrainedmodels/xception-b5690688.pth')
         model_dict = {}
         state_dict = self.state_dict()
 
